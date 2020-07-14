@@ -93,7 +93,7 @@ function myDogFeeder(dogWeight, ageInYears){
         foodAmount = dogWeight * 0.04;
         console.log("7");
     }
-
+    else { return "Are you sure you are feeding a dog?";}
     return foodAmount;
 }
 
@@ -177,10 +177,12 @@ function annoyingSong(a){
 //and anything below 60 should be F
   
 function gradeAssignment(a){
-    if (a > 89){console.log(`Your score of ${a} resulted in a grade of (A.)`);}
+    if (a > 100) {console.log("Extra credit is a lie...");}
+    else if (a > 89){console.log(`Your score of ${a} resulted in a grade of (A.)`);}
     else if (a > 79){console.log(`Your score of ${a} resulted in a grade of (B.)`);}
     else if (a > 69){console.log(`Your score of ${a} resulted in a grade of (C.)`);}
     else if (a > 59){console.log(`Your score of ${a} resulted in a grade of (D.)`);}
+
     else {return `You have failed. (F.)`}
 
 }
@@ -192,6 +194,25 @@ function gradeAssignment(a){
 // Hint - you may need to study tomorrow's traning kit on arrays 
 // try looking up the .includes() method
 
+function countVowels (strOne){
+    return (includesVowel("a", strOne) + includesVowel("e", strOne)
+         + includesVowel("i", strOne) + includesVowel("o", strOne) 
+         + includesVowel("u", strOne))
+}
+
+function includesVowel(a, stringToCount){
+    var vowelCount = 0;
+    let whileString = stringToCount.toLowerCase().split("");
+    while (whileString.includes(a) && whileString.length > 0){
+        let strPop = whileString.pop();
+        if (strPop === a){
+            vowelCount += 1;
+        }
+        
+    }
+    return vowelCount;
+    
+}
 
 
 
@@ -200,7 +221,35 @@ function gradeAssignment(a){
 //Take Rock, Paper, Sissors further
 //update your rock papers sissors code below to take a prompt from a user using the window object
 
+function roShamBoInput(){
+     
+    let userInputInt;
+    let userInput = promptUser().toString().toLowerCase();
+    
+    const randomNum = Math.ceil(Math.random() * 3);
 
+    if (userInput === "rock") {userInputInt = 1;}
+    else if (userInput === "paper") {userInputInt = 2;}
+    else if (userInput === "scissors") {userInputInt = 3;}
+    else {
+        return userInput;
+    }
 
+    if (userInputInt === 1 && randomNum === 1){ return "You drew.";}
+    else if (userInputInt === 1 && randomNum === 2){ return "You lost.";}
+    else if (userInputInt === 1 && randomNum === 3){ return "You won.";}
+    else if (userInputInt === 2 && randomNum === 1){ return "You won.";}
+    else if (userInputInt === 2 && randomNum === 2){ return "You drew.";}
+    else if (userInputInt === 2 && randomNum === 3){ return "You lost.";}
+    else if (userInputInt === 3 && randomNum === 1){ return "You lost.";}
+    else if (userInputInt === 3 && randomNum === 2){ return "You won.";}
+    else if (userInputInt === 3 && randomNum === 3){ return "You drew.";}
+    else {return "I see you don't know Roshambo..."}
+  }
+
+  function promptUser(){
+      let userInput = prompt("Rock, Paper, or Scissors?");
+      return userInput;
+  }
 
 
